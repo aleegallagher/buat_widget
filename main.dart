@@ -1,191 +1,141 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const String appTitle = '';
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
-        body: const SingleChildScrollView(
-          child: Column(
-            children: [
-                 ImageSection(
-    image: 'asset/images/oasis.jpg',
-  ),
-              TitleSection(
-                name: 'oasis',
-                location: 'Band, Mancaster, Inggris',
-              ),
-              ButtonSection(),
-              TextSection(
-    description:
-        'Oasis adalah band rock asal Inggris yang dibentuk di Manchester pada tahun 1991. Pada awalnya menggunakan nama the Rain, grup ini dibentuk oleh Liam Gallagher, Paul Arthurs, Paul McGuigan, dan Tony McCarroll, hingga kemudian ikut bergabung pula kakak Liam, Noel Gallagher.',
-  ),
-],
-          ),
-        ),
-      ),
-    );
-  }
+void main() {
+  runApp(MyApp());
 }
 
-
-class TitleSection extends StatelessWidget {
-  const TitleSection({
-    super.key,
-    required this.name,
-    required this.location,
-  });
-
-  final String name;
-  final String location;
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: Row(
-        children: [
-          Expanded(
-
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    name,
-                    style: const TextStyle(
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Evaluasi Akhir'),
+        ),
+        body: Row(
+          children: [
+            
+            Container(
+              width: 300, 
+              padding: EdgeInsets.all(16.0),
+              color: const Color.fromARGB(255, 160, 239, 250),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'RESEP RUMAHAN',
+                    style: TextStyle(
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-                Text(
-                  location,
-                  style: TextStyle(
-                    color: Colors.grey[500],
+                  SizedBox(height: 16),
+                  Container(
+                    padding: EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color.fromARGB(255, 0, 0, 0)),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'KOPI BUTTER',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Apa itu kopi butter? Kopi butter (coffee butter) merupakan minuman kopi yang dicampur dengan mentega atau ghee dan minyak trigliserida rantai menengah (MCT). Umumnya, mentega yang digunakan dalam hidangan kopi ini berasal dari sapi yang diberi makan rumput atau grass-fed butter.',
+                        ),
+                        //ini buat bintang sama review
+                        SizedBox(height: 16),
+                        Row(
+                          children: [
+                            Icon(Icons.star),
+                            Icon(Icons.star),
+                            Icon(Icons.star),
+                            Icon(Icons.star),
+                            Icon(Icons.star),
+                            SizedBox(width: 8),
+                            Text('1K Reviews'),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color.fromARGB(255, 255, 30, 0)),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              //ini icon 3 nya
+                              child: Column(
+                                children: [
+                                  Icon(Icons.kitchen, color: const Color.fromARGB(255, 255, 0, 0)),
+                                  SizedBox(height: 8),
+                                  Text('PREP'),
+                                  Text('5 min'),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Container(
+                              padding: EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color.fromARGB(255, 0, 255, 0)),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(Icons.timer, color: const Color.fromARGB(255, 0, 255, 8)),
+                                  SizedBox(height: 8),
+                                  Text('COOK'),
+                                  Text('5-10 min'),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            Container(
+                              padding: EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: const Color.fromARGB(255, 0, 18, 66)),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  Icon(Icons.restaurant, color: const Color.fromARGB(255, 0, 35, 82)),
+                                  SizedBox(height: 8),
+                                  Text('FEEDS:'),
+                                  Text('1'),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
+                ],
+              ),
+            ),
+            // foto
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                child: Image.asset(
+                  'asset/kopibutter.jpg',
+                  fit: BoxFit.cover, 
+                  height: double.infinity, 
                 ),
-              ],
+              ),
             ),
-          ),
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          const Text('41'),
-        ],
-      ),
-    );
-  }
-}
-
-class ButtonSection extends StatelessWidget {
-  const ButtonSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final Color color = Theme.of(context).primaryColor;
-    return SizedBox(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ButtonWithText(
-            color: color,
-            icon: Icons.call,
-            label: 'CALL',
-          ),
-          ButtonWithText(
-            color: color,
-            icon: Icons.near_me,
-            label: 'ROUTE',
-          ),
-          ButtonWithText(
-            color: color,
-            icon: Icons.share,
-            label: 'SHARE',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class TextSection extends StatelessWidget {
-  const TextSection({
-    super.key,
-    required this.description,
-  });
-
-  final String description;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: Text(
-        description,
-        softWrap: true,
-      ),
-    );
-  }
-}
-
-class ButtonWithText extends StatelessWidget {
-  const ButtonWithText({
-    super.key,
-    required this.color,
-    required this.icon,
-    required this.label,
-  });
-
-  final Color color;
-  final IconData icon;
-  final String label;
-
-   @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: color),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),
-          ),
+          ],
         ),
-      ],
-    );
-  }
-}
-
-class ImageSection extends StatelessWidget {
-  const ImageSection({super.key, required this.image});
-
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      image,
-      width: 600,
-      height: 240,
-      fit: BoxFit.cover,
+      ),
     );
   }
 }
